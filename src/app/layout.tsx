@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
+import { Providers } from "@/providers";
 import "./globals.css";
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,16 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jetbrainsMono.variable} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${plexMono.variable} antialiased`}>
-        <ThemeProvider
+        <Providers
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
